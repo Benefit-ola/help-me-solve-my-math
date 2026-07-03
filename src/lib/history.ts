@@ -19,7 +19,7 @@ export function addHistoryEntry(entry: Omit<HistoryEntry, "id" | "timestamp">) {
     timestamp: Date.now(),
   };
   const current = getHistory();
-  const updated = [newEntry, ...current]; // newest first
+  const updated = [newEntry, ...current];
   localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
   return updated;
 }
