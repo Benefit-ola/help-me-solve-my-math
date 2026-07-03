@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { HistoryEntry, ToolType } from "@/src/types";
-import { clearHistory, deleteHistoryEntry, getHistory } from "@/src/lib/history";
+import { HistoryEntry, ToolType } from "@/types";
+import { clearHistory, deleteHistoryEntry, getHistory } from "@/lib/history";
 
 const toolLabels: Record<ToolType, string> = {
   calculator: "Basic Calculator",
