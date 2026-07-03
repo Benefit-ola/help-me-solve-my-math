@@ -11,7 +11,7 @@ const tools = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#fdfcfb] px-4 py-12 md:px-8">
+    <div className="bg-[#fdfcfb] px-4 py-12 md:px-8">
       <div className="max-w-4xl mx-auto">
 
         {/* HEADER */}
@@ -55,26 +55,6 @@ export default function Home() {
           ))}
         </div>
 
-        {/* SECONDARY LINKS */}
-        <div className="mt-8 flex items-center justify-center gap-6">
-          <Link
-            href="/history"
-            className="text-xs font-semibold text-gray-400 hover:text-brand transition-colors"
-          >
-            View History →
-          </Link>
-          <Link
-            href="/settings"
-            className="text-xs font-semibold text-gray-400 hover:text-brand transition-colors"
-          >
-            Settings →
-          </Link>
-        </div>
-
-        {/* FOOTER */}
-        <div className="mt-10 text-center text-xs text-gray-400">
-          Built by <span className="text-brand font-medium">Faidat Olawuyi</span>
-        </div>
       </div>
     </div>
   );
