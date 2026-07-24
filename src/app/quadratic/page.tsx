@@ -178,16 +178,24 @@ export default function QuadraticSolver() {
     responsive: true,
     maintainAspectRatio: false,
     plugins: { legend: { display: false }, tooltip: { callbacks: {
-      label: (ctx: { parsed: { x: number; y: number } }) => `f(${ctx.parsed.x}) = ${ctx.parsed.y}`,
+      label: (ctx: { parsed: { x: number | null; y: number | null } }) => `f(${ctx.parsed.x ?? 0}) = ${ctx.parsed.y ?? 0}`,
     }}},
     scales: {
       x: {
         type: "linear" as const,
-        ticks: { color: "#9ca3af", maxTicksLimit: 8, callback: (v: number) => v.toFixed(1) },
+        ticks: {
+          color: "#9ca3af",
+          maxTicksLimit: 8,
+          callback: (v: string | number) => (typeof v === "number" ? v.toFixed(1) : v),
+        },
         grid: { color: "rgba(0,0,0,0.05)" },
       },
       y: {
-        ticks: { color: "#9ca3af", maxTicksLimit: 6, callback: (v: number) => v.toFixed(1) },
+        ticks: {
+          color: "#9ca3af",
+          maxTicksLimit: 6,
+          callback: (v: string | number) => (typeof v === "number" ? v.toFixed(1) : v),
+        },
         grid: { color: "rgba(0,0,0,0.05)" },
       },
     },
