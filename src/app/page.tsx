@@ -11,7 +11,7 @@ const tools = [
 
 export default function Home() {
   return (
-    <div className="bg-[#fdfcfb] px-4 py-12 md:px-8">
+    <div className="px-4 py-12 md:px-8">
       <div className="max-w-4xl mx-auto">
 
         {/* HEADER */}
@@ -23,10 +23,10 @@ export default function Home() {
             </span>
             <span className="h-[1px] w-8 bg-brand" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-3">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight mb-3">
             Help Me Solve <span className="text-brand">My Math</span>
           </h1>
-          <p className="text-gray-500 text-sm leading-relaxed max-w-lg mx-auto">
+          <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed max-w-lg mx-auto">
             Pick a tool below — every solution comes with clear step-by-step
             working, and gets saved to your history automatically.
           </p>
@@ -38,14 +38,14 @@ export default function Home() {
             <Link
               key={tool.href}
               href={tool.href}
-              className="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:border-brand hover:shadow-md transition-all duration-200"
+              className="group bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 shadow-sm hover:border-brand hover:shadow-md transition-all duration-200"
             >
               <div className="flex items-start gap-4">
-                <span className="text-2xl flex-shrink-0 w-11 h-11 rounded-xl bg-brand-50 flex items-center justify-center">
+                <span className="text-2xl flex-shrink-0 w-11 h-11 rounded-xl bg-brand-50 dark:bg-gray-800 flex items-center justify-center">
                   {tool.icon}
                 </span>
                 <div className="min-w-0">
-                  <h2 className="text-sm font-bold text-gray-900 group-hover:text-brand transition-colors mb-1">
+                  <h2 className="text-sm font-bold text-gray-900 dark:text-gray-100 group-hover:text-brand transition-colors mb-1">
                     {tool.name}
                   </h2>
                   <p className="text-xs text-gray-400 leading-relaxed">{tool.desc}</p>

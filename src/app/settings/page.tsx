@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getSettings, updateSettings, resetSettings, AppSettings } from "@/lib/settings";
+import { applyTheme } from "@/lib/theme";
 import { clearHistory, getHistory } from "@/lib/history";
 
 export default function SettingsPage() {
@@ -11,7 +12,9 @@ export default function SettingsPage() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setSettings(getSettings());
+    const current = getSettings();
+    setSettings(current);
+    applyTheme(current.theme);
     setEntryCount(getHistory().length);
     setLoaded(true);
   }, []);
@@ -19,6 +22,7 @@ export default function SettingsPage() {
   const handleThemeChange = (theme: "light" | "dark") => {
     const updated = updateSettings({ theme });
     setSettings(updated);
+    applyTheme(theme);
   };
 
   const handlePrecisionChange = (precision: number) => {
@@ -38,12 +42,13 @@ export default function SettingsPage() {
   const handleResetSettings = () => {
     const defaults = resetSettings();
     setSettings(defaults);
+    applyTheme(defaults.theme);
   };
 
   if (!loaded) return null;
 
   return (
-    <div className="min-h-screen bg-[#fdfcfb] px-4 py-12 md:px-8">
+    <div className="px-4 py-12 md:px-8">
       <div className="max-w-2xl mx-auto">
 
         {/* HEADER */}
@@ -54,7 +59,7 @@ export default function SettingsPage() {
               Preferences
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">
             Settings
           </h1>
         </div>
@@ -62,8 +67,8 @@ export default function SettingsPage() {
         <div className="flex flex-col gap-6">
 
           {/* THEME */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-            <h2 className="text-sm font-bold text-gray-900 uppercase tracking-widest mb-1">
+          <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 shadow-sm">
+            <h2 className="text-sm font-bold text-gray-900 dark:text-gray-100 uppercase tracking-widest mb-1">
               Theme
             </h2>
             <p className="text-xs text-gray-400 mb-4">Choose how the app looks.</p>
@@ -75,23 +80,18 @@ export default function SettingsPage() {
                   className={`px-5 py-2.5 rounded-xl text-sm font-semibold border capitalize transition-all ${
                     settings.theme === t
                       ? "bg-brand text-white border-brand"
-                      : "bg-gray-50 text-gray-600 border-gray-200 hover:border-brand hover:text-brand"
+                      : "bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-brand hover:text-brand"
                   }`}
                 >
                   {t}
                 </button>
               ))}
             </div>
-            {settings.theme === "dark" && (
-              <p className="text-[11px] text-amber-600 bg-amber-50 rounded-lg px-3 py-2 mt-4">
-                Saved — dark mode styling isn&apos;t wired into the pages yet, this preference is stored for when it is.
-              </p>
-            )}
           </div>
 
           {/* PRECISION */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-            <h2 className="text-sm font-bold text-gray-900 uppercase tracking-widest mb-1">
+          <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 shadow-sm">
+            <h2 className="text-sm font-bold text-gray-900 dark:text-gray-100 uppercase tracking-widest mb-1">
               Decimal Precision
             </h2>
             <p className="text-xs text-gray-400 mb-4">
@@ -112,12 +112,12 @@ export default function SettingsPage() {
           </div>
 
           {/* HISTORY MANAGEMENT */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-            <h2 className="text-sm font-bold text-gray-900 uppercase tracking-widest mb-1">
+          <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 shadow-sm">
+            <h2 className="text-sm font-bold text-gray-900 dark:text-gray-100 uppercase tracking-widest mb-1">
               History
             </h2>
             <p className="text-xs text-gray-400 mb-4">
-              You currently have <span className="font-semibold text-gray-700">{entryCount}</span> saved {entryCount === 1 ? "entry" : "entries"}.
+              You currently have <span className="font-semibold text-gray-700 dark:text-gray-300">{entryCount}</span> saved {entryCount === 1 ? "entry" : "entries"}.
             </p>
             <div className="flex items-center gap-3">
               <button
@@ -136,8 +136,8 @@ export default function SettingsPage() {
           </div>
 
           {/* RESET */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-            <h2 className="text-sm font-bold text-gray-900 uppercase tracking-widest mb-1">
+          <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 shadow-sm">
+            <h2 className="text-sm font-bold text-gray-900 dark:text-gray-100 uppercase tracking-widest mb-1">
               Reset
             </h2>
             <p className="text-xs text-gray-400 mb-4">
@@ -145,7 +145,7 @@ export default function SettingsPage() {
             </p>
             <button
               onClick={handleResetSettings}
-              className="text-xs font-semibold text-gray-500 hover:text-brand border border-gray-200 hover:border-brand rounded-full px-4 py-2 transition-colors"
+              className="text-xs font-semibold text-gray-500 hover:text-brand border border-gray-200 dark:border-gray-700 hover:border-brand rounded-full px-4 py-2 transition-colors"
             >
               Reset to Defaults
             </button>

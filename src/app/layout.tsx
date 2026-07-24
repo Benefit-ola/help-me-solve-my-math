@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Help Me Solve My Math",
-  description: "Solve quadratic equations, matrices, unit conversions, and more.",
+  description:
+    "Solve quadratic equations, matrices, unit conversions, and more.",
 };
 
 export default function RootLayout({
@@ -25,10 +26,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-950`}
+      >
         <div className="flex min-h-screen">
           <Sidebar />
-          <main className="flex-1 min-w-0">{children}</main>
+
+          <main className="flex-1 min-w-0 pb-20 lg:pb-0">
+  {children}
+</main>
         </div>
       </body>
     </html>
