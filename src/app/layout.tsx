@@ -30,18 +30,30 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body
+      {/* <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-950`}
       >
         <div className="flex flex-col lg:flex-row min-h-screen">
           <Sidebar />
 
           <div className="flex-1 min-w-0 flex flex-col">
-            <main className="flex-1 pb-20 lg:pb-0">{children}</main>
+            <main className="flex-1 pb-16 lg:pb-0">{children}</main>
             <Footer />
           </div>
         </div>
-      </body>
+      </body> */}
+
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-950`}>
+  
+  <div className="flex min-h-screen">
+    <Sidebar />
+    <div className="flex-1 min-w-0 flex flex-col w-full lg:w-auto">
+      <main className="flex-1 pb-16 lg:pb-0">{children}</main>
+      <Footer />
+    </div>
+  </div>
+
+</body>
     </html>
   );
 }
