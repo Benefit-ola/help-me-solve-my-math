@@ -120,9 +120,7 @@ export default function Calculator() {
           </div>
         </div>
 
-        <p className="text-center text-xs text-gray-400 mt-6">
-          Built by <span className="text-brand font-medium">Faidat Olawuyi</span> · JS Projects
-        </p>
+      
       </div>
     </div>
   );

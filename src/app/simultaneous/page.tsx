@@ -200,9 +200,7 @@ export default function SimultaneousSolver() {
           </div>
         </div>
 
-        <div className="mt-10 text-center text-xs text-gray-400">
-          Built by <span className="text-brand font-medium">Faidat Olawuyi</span>
-        </div>
+       
       </div>
     </div>
   );

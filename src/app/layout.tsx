@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/Components/layout/Sidebar";
+import Sidebar from "@/components/layout/Sidebar";
+import Footer from "@/components/layout/Footer";
+import { themeInitScript } from "@/lib/theme";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Help Me Solve My Math",
-  description:
-    "Solve quadratic equations, matrices, unit conversions, and more.",
+  description: "Solve quadratic equations, matrices, unit conversions, and more.",
 };
 
 export default function RootLayout({
@@ -26,15 +27,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-950`}
       >
-        <div className="flex min-h-screen">
+        <div className="flex flex-col lg:flex-row min-h-screen">
           <Sidebar />
 
-          <main className="flex-1 min-w-0 pb-20 lg:pb-0">
-  {children}
-</main>
+          <div className="flex-1 min-w-0 flex flex-col">
+            <main className="flex-1 pb-20 lg:pb-0">{children}</main>
+            <Footer />
+          </div>
         </div>
       </body>
     </html>

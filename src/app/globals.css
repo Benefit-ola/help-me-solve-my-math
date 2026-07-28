@@ -17,8 +17,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 
   --color-brand: #D63384;
   --color-brand-light: #F472B6;
@@ -29,10 +27,10 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* hides the scrollbar on the mobile bottom tab bar, keeps it scrollable */
+/* hides the scrollbar on the mobile bottom tab bar / sidebar, keeps it scrollable */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

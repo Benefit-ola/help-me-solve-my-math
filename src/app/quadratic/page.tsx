@@ -411,10 +411,7 @@ int main() {
           </div>
         </div>
 
-        {/* footer */}
-        <div className="mt-10 text-center text-xs text-gray-400">
-          Built by <span className="text-brand font-medium">Faidat Olawuyi</span> · C Programming → React Project
-        </div>
+        
       </div>
     </div>
   );
