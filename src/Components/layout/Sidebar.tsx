@@ -317,7 +317,7 @@ export default function Sidebar() {
       {/* Desktop Sidebar */}
             <aside
         aria-label="Sidebar Navigation"
-        className="hidden lg:flex lg:flex-col w-56 xl:w-64 h-screen sticky top-0 flex-shrink-0 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 px-4 py-6 overflow-y-auto"
+        className="hidden lg:flex lg:flex-col w-56 xl:w-64 flex-shrink-0 h-screen sticky top-0 ..."
       >
         <Link href="/" className="mb-8 px-2">
           <h1 className="text-lg font-extrabold leading-tight text-gray-900 dark:text-white">

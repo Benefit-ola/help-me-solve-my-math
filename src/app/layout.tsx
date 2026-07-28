@@ -30,20 +30,9 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      {/* <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-950`}
-      >
-        <div className="flex flex-col lg:flex-row min-h-screen">
-          <Sidebar />
+      
 
-          <div className="flex-1 min-w-0 flex flex-col">
-            <main className="flex-1 pb-16 lg:pb-0">{children}</main>
-            <Footer />
-          </div>
-        </div>
-      </body> */}
-
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-950`}>
+      {/* <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-950`}>
   
   <div className="flex min-h-screen">
     <Sidebar />
@@ -53,6 +42,21 @@ export default function RootLayout({
     </div>
   </div>
 
+</body> */}
+
+<body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-950`}>
+  <div className="flex min-h-screen">
+    
+    {/* Sidebar — only takes space on desktop */}
+    <Sidebar />
+
+    {/* Main content — full width on mobile */}
+    <div className="flex-1 min-w-0 flex flex-col overflow-hidden">
+      <main className="flex-1 w-full pb-16 lg:pb-0">{children}</main>
+      <Footer />
+    </div>
+
+  </div>
 </body>
     </html>
   );
